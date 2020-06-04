@@ -21,7 +21,7 @@ def send_broadcast (data,conn):
             clients.remove(c)
 
 def accept_connection():
-    print ('Acepted connection')
+    print ('Accepted connection')
     while True:
         try:
             conn , addr = server.accept()
