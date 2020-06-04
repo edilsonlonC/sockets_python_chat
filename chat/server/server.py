@@ -52,6 +52,20 @@ if __name__ == "__main__":
     server.bind((HOST,PORT))
     server.listen(10)
     server.setblocking(False)
+    nick_name_correct = False
+    while  nick_name_correct != True:
+        conn,addr = server.accept()
+        conn.setblocking(False)
+        nick_name = conn.recv(1024)
+        if nick_name:
+            
+            nick_name_correct = True
+            if nick_name == 'salir':
+                server.close()
+                sys.exit()
+
+
+
     accept = threading.Thread(target=accept_connection)
     process = threading.Thread(target=process_connection)
     accept.daemon = True
