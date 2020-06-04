@@ -15,7 +15,7 @@ def recv_message():
             
             data = server.recv(1024)
             if (data):
-                print(pickle.loads(data))
+                print('\n',pickle.loads(data))
         except:
             pass
 
@@ -30,10 +30,20 @@ if __name__ == "__main__":
     msg_recv = threading.Thread(target=recv_message)
     msg_recv.daemon = True
     msg_recv.start()
+    mesg_server = ''
+
+    #send nick name
+    while mesg_server != 'True':
+        nick_name = input('username')
+        send_messagge(nick_name)
+        mesg_server =  pickle.loads(server.recv(1024))
+        if !mesg_server:
+            PRINT('CHECK NICKNAME')
 
     while True:
-        data = input('#')
+        data = input('->')
         if data != 'salir':
+            print('yo : ' , data)
             send_messagge(data)
         else:
             server.close()
